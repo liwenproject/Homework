@@ -9,8 +9,8 @@ namespace Homework.Controllers
 {
     public class MoneyController : Controller
     {
-        // GET: Money
-        public ActionResult Index()
+
+        public ActionResult MoneyAdd()
         {
             return View();
         }
@@ -20,7 +20,7 @@ namespace Homework.Controllers
             var model = new List<MoneyListViewModels>();          
             model.Add(new MoneyListViewModels { Category = "支出", Amount = 100, BillingDate = Convert.ToDateTime("2016/04/01"), Memo = "買蘋果" });
             model.Add(new MoneyListViewModels { Category = "收入", Amount = 50000, BillingDate = Convert.ToDateTime("2016/04/05"), Memo = "薪資" });
-            model.Add(new MoneyListViewModels { Category = "支出", Amount = 1200, BillingDate = Convert.ToDateTime("2016/04/01"), Memo = "通訊費" });
+            model.Add(new MoneyListViewModels { Category = "支出", Amount = 1200, BillingDate = Convert.ToDateTime("2016/04/06"), Memo = "通訊費" });
             return View(model);
         }
     }
