@@ -10,12 +10,12 @@ namespace Homework.Models
     {
         [Display(Name = "類別")]
         public string Category { get; set; }
-        [Display(Name = "金額")]
-        public double Amount { get; set; }
         [Display(Name = "日期")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BillingDate { get; set; }
-        [Display(Name = "備註")]
-        public string Memo { get; set; }
+        [Display(Name = "金額")]
+        //[DataType(DataType.Currency)]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:#,##0}")]
+        public double Amount { get; set; }
     }
 }

@@ -23,9 +23,9 @@ namespace Homework.Controllers
         {
             //先做假資料
             var model = new List<MoneyListViewModels>();          
-            model.Add(new MoneyListViewModels { Category = "支出", Amount = 100, BillingDate = Convert.ToDateTime("2016/04/01"), Memo = "買水果" });
-            model.Add(new MoneyListViewModels { Category = "收入", Amount = 50000, BillingDate = Convert.ToDateTime("2016/04/05"), Memo = "薪資" });
-            model.Add(new MoneyListViewModels { Category = "支出", Amount = 1200, BillingDate = Convert.ToDateTime("2016/04/06"), Memo = "通訊費" });
+            model.Add(new MoneyListViewModels { Category = "支出", Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") });
+            model.Add(new MoneyListViewModels { Category = "支出", Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") });
+            model.Add(new MoneyListViewModels { Category = "支出", Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") });
 
             return View(model);
         }

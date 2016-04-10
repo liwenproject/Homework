@@ -11,42 +11,42 @@
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
 
-<table class="table">
+<table class="table table-bordered table-hover">
     <tr>
+        <th>#</th>
         <th>
             @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Amount)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BillingDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Memo)
+            @Html.DisplayNameFor(model => model.Amount)
         </th>
-        <th></th>
+        @*<th></th>*@
     </tr>
 
+@{var i = 0; }
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @{i++; }
+            @(i.ToString())
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.BillingDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Memo)
+        <td align="right">
+            @Html.DisplayFor(modelItem => item.Amount)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+        </td>*@
     </tr>
 }
 
