@@ -12,13 +12,16 @@ namespace Homework.Controllers
 
         public ActionResult MoneyAdd()
         {
-            var model = new MoneyAddViewModels();
-            return View(model);
+            //var model = new MoneyAddViewModels();
+            //return View(model);
+
+            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+            return View();
         }
 
         public ActionResult MoneyList()
         {
-            //先做靜態假資料
+            //先做假資料
             var model = new List<MoneyListViewModels>();          
             model.Add(new MoneyListViewModels { Category = "支出", Amount = 100, BillingDate = Convert.ToDateTime("2016/04/01"), Memo = "買水果" });
             model.Add(new MoneyListViewModels { Category = "收入", Amount = 50000, BillingDate = Convert.ToDateTime("2016/04/05"), Memo = "薪資" });
