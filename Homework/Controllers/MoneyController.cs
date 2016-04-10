@@ -12,7 +12,8 @@ namespace Homework.Controllers
 
         public ActionResult MoneyAdd()
         {
-            return View();
+            var model = new MoneyAddViewModels();
+            return View(model);
         }
 
         public ActionResult MoneyList()
