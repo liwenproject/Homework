@@ -10,7 +10,7 @@ namespace Homework.Controllers
     public class MoneyController : Controller
     {
 
-        public ActionResult MoneyAdd()
+        public ActionResult Add()
         {
             //var model = new MoneyAddViewModels();
             //return View(model);
@@ -19,7 +19,7 @@ namespace Homework.Controllers
             return View();
         }
 
-        public ActionResult MoneyList()
+        public ActionResult List()
         {
             //先做假資料
             var model = new List<MoneyListViewModels>();          

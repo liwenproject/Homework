@@ -271,8 +271,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Money\MoneyAdd.cshtml" />
-    <Content Include="Views\Money\MoneyList.cshtml" />
+    <Content Include="Views\Money\Add.cshtml" />
+    <Content Include="Views\Money\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

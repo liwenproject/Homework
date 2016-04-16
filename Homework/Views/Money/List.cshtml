@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Homework.Models.MoneyListViewModels>
+
+@{
+    ViewBag.Title = "MoneyList";
+    Layout = null;
+}
+
+@*<h2>MoneyList</h2>*@
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@{var i = 0; }
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @{
+                i++;
+                @(i)
+             }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillingDate)
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>
