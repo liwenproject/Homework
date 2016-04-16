@@ -27,11 +27,14 @@
     </tr>
 
 @{var i = 0; }
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
-            @{i++; }
-            @(i.ToString())
+            @{
+                i++;
+                @(i)
+             }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Category)
