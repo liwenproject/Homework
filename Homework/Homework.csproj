@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -202,9 +204,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountBook.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MoneyEFModels.cs" />
     <Compile Include="Models\MoneyListViewModels.cs" />
     <Compile Include="Models\MoneyAddViewModels.cs" />
     <Compile Include="Models\MoneyModels.cs" />
@@ -213,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SkillTreeHomeworkDB.mdf" />
+    <Content Include="App_Data\SkillTreeHomeworkDB_log.ldf">
+      <DependentUpon>SkillTreeHomeworkDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
