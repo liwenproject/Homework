@@ -10,7 +10,11 @@
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-
+@{
+    var i = 0;
+    var Categorylist = ViewData["CategoryList"] as SelectList;
+    //@Categorylist.Where(c => c.Value == "0").FirstOrDefault().Text
+}
 <table class="table table-bordered table-hover">
     <tr>
         <th>#</th>
@@ -25,8 +29,6 @@
         </th>
         @*<th></th>*@
     </tr>
-
-@{var i = 0; }
 @foreach (var item in Model)
 {
     <tr>
@@ -34,7 +36,9 @@
             @(++i)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Category)
+            @*@Html.DisplayFor(modelItem => item.Category)*@
+            @*@Html.Raw(item.Category.ToString())*@
+            @Html.Raw(Categorylist.Where(c => c.Value == item.Category).FirstOrDefault().Text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BillingDate)

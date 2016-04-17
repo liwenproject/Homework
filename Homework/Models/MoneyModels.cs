@@ -10,13 +10,13 @@ namespace Homework.Models
     {
         public static SelectList GetCategoryList()
         {
-            var list = new SelectList(new[]
+            var result = new SelectList(new[]
             {
-                new { ID = "0", Name = "收入" },
-                new { ID = "1", Name = "支出" },
+                new { Value = "0", Text = "收入" },
+                new { Value = "1", Text = "支出" },
             },
-            "ID", "Name", 1);
-            return list;
+            "Value", "Text");            
+            return result;
         }
 
     }
