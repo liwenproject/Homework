@@ -48,7 +48,7 @@ namespace Homework.Models
                         //寫法2:
                         var item = new MoneyListViewModels()
                         {
-                            Category = reader["Categoryyy"].ToString(),
+                            Category = int.Parse(reader["Categoryyy"].ToString()),
                             Amount = double.Parse(reader["Amounttt"].ToString()),
                             BillingDate = DateTime.Parse(reader["Dateee"].ToString())
                         };

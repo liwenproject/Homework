@@ -38,9 +38,9 @@ namespace Homework.Controllers
         private List<MoneyListViewModels> DataFake()
         {
             var model = new List<MoneyListViewModels>();
-            model.Add(new MoneyListViewModels { Category = "0", Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") });
-            model.Add(new MoneyListViewModels { Category = "1", Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") });
-            model.Add(new MoneyListViewModels { Category = "0", Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") });
+            model.Add(new MoneyListViewModels { Category = 0, Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") });
+            model.Add(new MoneyListViewModels { Category = 1, Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") });
+            model.Add(new MoneyListViewModels { Category = 0, Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") });
 
             return model;
         }
@@ -54,9 +54,9 @@ namespace Homework.Controllers
         {
             return new List<MoneyListViewModels>
             {
-                new MoneyListViewModels { Category = "0", Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") },
-                new MoneyListViewModels { Category = "1", Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") },
-                new MoneyListViewModels { Category = "0", Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") },
+                new MoneyListViewModels { Category = 0, Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") },
+                new MoneyListViewModels { Category = 1, Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") },
+                new MoneyListViewModels { Category = 0, Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") },
             };
         }
 

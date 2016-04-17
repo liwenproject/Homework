@@ -9,7 +9,7 @@ namespace Homework.Models
     public class MoneyListViewModels
     {
         [Display(Name = "類別")]
-        public string Category { get; set; }
+        public int Category { get; set; }
         [Display(Name = "日期")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BillingDate { get; set; }

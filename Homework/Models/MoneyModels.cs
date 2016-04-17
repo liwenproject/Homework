@@ -12,8 +12,8 @@ namespace Homework.Models
         {
             var result = new SelectList(new[]
             {
-                new { Value = "0", Text = "收入" },
-                new { Value = "1", Text = "支出" },
+                new { Value = 0, Text = "收入" },
+                new { Value = 1, Text = "支出" },
             },
             "Value", "Text");            
             return result;

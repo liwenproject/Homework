@@ -11,7 +11,7 @@ namespace Homework.Models
     {
         [Required]
         [Display(Name = "類別")]
-        public string Category { get; set; }
+        public int Category { get; set; }
         [Required]
         [Display(Name = "金額")]
         public double Amount { get; set; }

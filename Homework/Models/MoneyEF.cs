@@ -30,7 +30,7 @@ namespace Homework.Models
             {
                 result.Add(new MoneyListViewModels
                 {
-                    Category = item.Categoryyy.ToString(),
+                    Category = item.Categoryyy,
                     Amount = item.Amounttt,
                     BillingDate = item.Dateee
                 });
