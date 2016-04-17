@@ -12,8 +12,8 @@ namespace Homework.Models
         {
             var list = new SelectList(new[]
             {
-                new { ID = "Income", Name = "收入" },
-                new { ID = "Expense", Name = "支出" },
+                new { ID = "0", Name = "收入" },
+                new { ID = "1", Name = "支出" },
             },
             "ID", "Name", 1);
             return list;

@@ -208,7 +208,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MoneyEFModels.cs" />
+    <Compile Include="Models\MoneyDAO.cs" />
+    <Compile Include="Models\MoneyEF.cs" />
     <Compile Include="Models\MoneyListViewModels.cs" />
     <Compile Include="Models\MoneyAddViewModels.cs" />
     <Compile Include="Models\MoneyModels.cs" />

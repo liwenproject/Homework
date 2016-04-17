@@ -3,3 +3,7 @@
 ################################################################################
 
 /Homework/App_Data/SkillTreeHomeworkDB_log.ldf
+/Homework/bin
+/.vs
+/Homework/obj
+/packages

@@ -9,7 +9,8 @@ namespace Homework.Controllers
 {
     public class MoneyController : Controller
     {
-        private MoneyEFModels db = new MoneyEFModels();
+        private MoneyEF EFData = new MoneyEF();
+        private MoneyDAO DAOData = new MoneyDAO();
 
         public ActionResult Add()
         {
@@ -22,34 +23,18 @@ namespace Homework.Controllers
 
         public ActionResult List()
         {
-            //return View(FakeData());
-            return View(FEData());
+            //return View(DataFake());        //使用假資料
+            //return View(DAOData.GetData()); //使用DAO方式取得資料
+            return View(EFData.GetData());          //使用EF code-first from db 取得資料
         }
 
-        /// <summary>
-        /// 資料來源：用EF (code-first from db)產生
-        /// </summary>
-        /// <returns></returns>
-        private List<MoneyListViewModels> FEData()
-        {
-            int PageRows = 1000;
-            var model = new List<MoneyListViewModels>();
-            foreach(var item in db.AccountBook.Take(PageRows).ToList())
-            {
-                model.Add(new MoneyListViewModels {
-                    Category = item.Categoryyy.ToString(),
-                    Amount = item.Amounttt,
-                    BillingDate = item.Dateee
-                });
-            }
-            return model;
-        }
+
 
         /// <summary>
         /// 假資料
         /// </summary>
         /// <returns></returns>
-        private List<MoneyListViewModels> FakeData()
+        private List<MoneyListViewModels> DataFake2()
         {
             var model = new List<MoneyListViewModels>();
             model.Add(new MoneyListViewModels { Category = "支出", Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") });
@@ -58,6 +43,21 @@ namespace Homework.Controllers
 
             return model;
         }
+
+        /// <summary>
+        /// 假資料
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MoneyListViewModels> DataFake()
+        {
+            return new List<MoneyListViewModels>
+            {
+                new MoneyListViewModels { Category = "支出", Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") },
+                new MoneyListViewModels { Category = "支出", Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") },
+                new MoneyListViewModels { Category = "支出", Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") },
+            };
+        }
+
 
     }
 }
