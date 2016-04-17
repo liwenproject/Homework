@@ -24,7 +24,7 @@ namespace Homework.Models
         /// <returns></returns>
         public List<MoneyListViewModels> GetData()
         {
-            int PageRows = 100;
+            int PageRows = 1000;
             var result = new List<MoneyListViewModels>();
             foreach (var item in AccountBook.Take(PageRows).ToList())
             {
