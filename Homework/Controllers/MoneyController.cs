@@ -12,13 +12,18 @@ namespace Homework.Controllers
         private MoneyEF EFData = new MoneyEF();
         private MoneyDAO DAOData = new MoneyDAO();
 
-        public ActionResult Add()
+        public ActionResult Add(MoneyAddViewModels data)
         {
             //var model = new MoneyAddViewModels();
             //return View(model);
-
             ViewData["CategoryList"] = MoneyModels.GetCategoryList();
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                return View();                
+            }
+           
+            return View(data);
         }
 
         public ActionResult List()
