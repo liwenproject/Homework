@@ -10,6 +10,8 @@ namespace Homework.Models
 {
     public class MoneyAddViewModels
     {
+        [Display(Name = "序號")]
+        public Guid Id { get; set; }
         [Required]
         [Display(Name = "類別")]
         public int Category { get; set; }

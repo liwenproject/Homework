@@ -284,6 +284,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Money\Add.cshtml" />
     <Content Include="Views\Money\List.cshtml" />
+    <Content Include="Views\Money\Edit.cshtml" />
+    <Content Include="Views\Money\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Valid\" />

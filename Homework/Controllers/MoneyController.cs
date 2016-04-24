@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework.Models;
+using System.Net;
 
 namespace Homework.Controllers
 {
     public class MoneyController : Controller
     {
-        private MoneyEF EFData = new MoneyEF();
         private MoneyDAO DAOData = new MoneyDAO();
         private readonly MoneyService _MoneyService;
 
@@ -42,6 +42,7 @@ namespace Homework.Controllers
                 _MoneyService.Add(MoneyAdd);
                 _MoneyService.Save();
                 return View();
+                //return RedirectToAction("Add");
             }
 
             return View();
@@ -52,39 +53,61 @@ namespace Homework.Controllers
         {
             ViewData["CategoryList"] = MoneyModels.GetCategoryList();
             
-            //return View(DataFake());        //使用假資料
+            //return View(_MoneyService.GetDataFake());        //使用假資料
             //return View(DAOData.GetData()); //使用DAO方式取得資料
-            return View(EFData.GetData());          //使用EF code-first from db 取得資料
+            return View(_MoneyService.GetDataEF());          //使用EF code-first from db 取得資料
         }
 
-
-        /// <summary>
-        /// 假資料
-        /// </summary>
-        /// <returns></returns>
-        private List<MoneyListViewModels> DataFake()
+        public ActionResult Detail(Guid? Id)
         {
-            var model = new List<MoneyListViewModels>();
-            model.Add(new MoneyListViewModels { Category = 0, Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") });
-            model.Add(new MoneyListViewModels { Category = 1, Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") });
-            model.Add(new MoneyListViewModels { Category = 0, Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") });
-
-            return model;
-        }
-
-
-        /// <summary>
-        /// 假資料
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<MoneyListViewModels> DataFake2()
-        {
-            return new List<MoneyListViewModels>
+            if (Id==null)
             {
-                new MoneyListViewModels { Category = 0, Amount = 300, BillingDate = Convert.ToDateTime("2016/01/01") },
-                new MoneyListViewModels { Category = 1, Amount = 1600, BillingDate = Convert.ToDateTime("2016/01/02") },
-                new MoneyListViewModels { Category = 0, Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") },
-            };
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AccountBook data = _MoneyService.GetSingle(Id.Value);
+            return View(_MoneyService.Detail(data));
+        }
+
+        public ActionResult Delete(Guid? Id)
+        {
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AccountBook data = _MoneyService.GetSingle(Id.Value);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            _MoneyService.Delete(data);
+            _MoneyService.Save();
+
+            return RedirectToAction("Add");
+        }
+
+        public ActionResult Edit(Guid? Id)
+        {
+            if (Id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AccountBook data = _MoneyService.GetSingle(Id.Value);
+
+            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+            return View(_MoneyService.Detail(data));
+        }
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "Id,Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
+        {
+            AccountBook olddata = _MoneyService.GetSingle(MoneyAdd.Id);
+            if (olddata != null && ModelState.IsValid)
+            {
+                _MoneyService.Edit(MoneyAdd, olddata);
+                _MoneyService.Save();
+                return RedirectToAction("Add");
+            }
+            return View();
         }
 
     }

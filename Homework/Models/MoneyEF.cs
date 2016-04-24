@@ -17,27 +17,5 @@ namespace Homework.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
-
-        /// <summary>
-        /// 資料來源：用EF (code-first from db)產生
-        /// </summary>
-        /// <returns></returns>
-        public List<MoneyListViewModels> GetData()
-        {
-            int PageRows = 10;
-            var result = new List<MoneyListViewModels>();
-            foreach (var item in AccountBook.Take(PageRows).OrderByDescending(c=>c.Dateee).ToList())
-            {
-                result.Add(new MoneyListViewModels
-                {
-                    Id = item.Id,
-                    Category = item.Categoryyy,
-                    Amount = item.Amounttt,
-                    BillingDate = item.Dateee
-                });
-            }
-            return result;
-        }
-
     }
 }
