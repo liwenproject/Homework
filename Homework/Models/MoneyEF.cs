@@ -24,12 +24,13 @@ namespace Homework.Models
         /// <returns></returns>
         public List<MoneyListViewModels> GetData()
         {
-            int PageRows = 1000;
+            int PageRows = 10;
             var result = new List<MoneyListViewModels>();
-            foreach (var item in AccountBook.Take(PageRows).ToList())
+            foreach (var item in AccountBook.Take(PageRows).OrderByDescending(c=>c.Dateee).ToList())
             {
                 result.Add(new MoneyListViewModels
                 {
+                    Id = item.Id,
                     Category = item.Categoryyy,
                     Amount = item.Amounttt,
                     BillingDate = item.Dateee

@@ -40,6 +40,7 @@ namespace Homework.Models
                         //寫法1:
                         //result.Add( new MoneyListViewModels()
                         //{
+                        //    Id = Guid.Parse(reader["Id"].ToString()),
                         //    Category = reader["Categoryyy"].ToString(),
                         //    Amount = double.Parse(reader["Amounttt"].ToString()),
                         //    BillingDate = DateTime.Parse(reader["Dateee"].ToString())
@@ -48,6 +49,7 @@ namespace Homework.Models
                         //寫法2:
                         var item = new MoneyListViewModels()
                         {
+                            Id = Guid.Parse(reader["Id"].ToString()),
                             Category = int.Parse(reader["Categoryyy"].ToString()),
                             Amount = double.Parse(reader["Amounttt"].ToString()),
                             BillingDate = DateTime.Parse(reader["Dateee"].ToString())

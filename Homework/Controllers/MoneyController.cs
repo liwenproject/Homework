@@ -11,8 +11,14 @@ namespace Homework.Controllers
     {
         private MoneyEF EFData = new MoneyEF();
         private MoneyDAO DAOData = new MoneyDAO();
+        private readonly MoneyService _MoneyService;
 
-        public ActionResult Add(MoneyAddViewModels data)
+        public MoneyController()
+        {
+            _MoneyService = new MoneyService();
+        }
+
+        public ActionResult Add()
         {
             //var model = new MoneyAddViewModels();
             //return View(model);
@@ -23,8 +29,24 @@ namespace Homework.Controllers
                 return View();                
             }
            
-            return View(data);
+            return View();
         }
+
+        [HttpPost]
+        public ActionResult Add([Bind(Include = "Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
+        {
+            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+
+            if (ModelState.IsValid)
+            {
+                _MoneyService.Add(MoneyAdd);
+                _MoneyService.Save();
+                return View();
+            }
+
+            return View();
+        }
+
 
         public ActionResult List()
         {

@@ -206,14 +206,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBook.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\MoneyDAO.cs" />
     <Compile Include="Models\MoneyEF.cs" />
-    <Compile Include="Models\MoneyListViewModels.cs" />
-    <Compile Include="Models\MoneyAddViewModels.cs" />
+    <Compile Include="ViewModel\MoneyListViewModels.cs" />
+    <Compile Include="ViewModel\MoneyAddViewModels.cs" />
     <Compile Include="Models\MoneyModels.cs" />
+    <Compile Include="Models\MoneyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
