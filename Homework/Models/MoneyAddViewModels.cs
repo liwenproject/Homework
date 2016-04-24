@@ -25,11 +25,13 @@ namespace Homework.Models
         [Required]
         [Display(Name = "日期")]
         //[DataType(DataType.Date)]
+        [Remote("EarlierSameToday", "Valid",AreaReference.UseRoot , ErrorMessage ="欄位 日期 不可大於今天")]
         public DateTime BillingDate { get; set; }
         [Required]
         [Display(Name = "備註")]
         [MaxLength(100)]
         public string Memo { get; set; }
+
 
         //public IEnumerable<SelectListItem> CategoryValues
         //{
