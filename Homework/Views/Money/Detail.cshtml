@@ -15,7 +15,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category)
+            @*@Html.DisplayFor(model => model.Category)*@
+            @MyHelper.CategoryDisplay(@Model.Category)
         </dd>
 
         <dt>

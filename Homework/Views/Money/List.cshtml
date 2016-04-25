@@ -38,7 +38,8 @@
         <td>
             @*@Html.DisplayFor(modelItem => item.Category)*@
             @*@Html.Raw(item.Category.ToString())*@
-            @Html.Raw(Categorylist.Where(c => c.Value == item.Category.ToString()).FirstOrDefault().Text)
+            @*@Html.Raw(Categorylist.Where(c => c.Value == item.Category.ToString()).FirstOrDefault().Text)*@
+            @MyHelper.CategoryDisplay(item.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BillingDate)
