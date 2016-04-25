@@ -205,12 +205,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountBook.cs" />
+    <Compile Include="Models\EFModel\AccountBook.cs" />
+    <Compile Include="Models\EFModel\Log.cs" />
+    <Compile Include="Models\LogService.cs" />
+    <Compile Include="Models\MoneyServiceV1.cs" />
+    <Compile Include="Repositories\EFUnitOfWork.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IUnitOfWork.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\MoneyDAO.cs" />
-    <Compile Include="Models\MoneyEF.cs" />
+    <Compile Include="Models\EFModel\MoneyEF.cs" />
     <Compile Include="ViewModel\MoneyListViewModels.cs" />
     <Compile Include="ViewModel\MoneyAddViewModels.cs" />
     <Compile Include="Models\MoneyModels.cs" />

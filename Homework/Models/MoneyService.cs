@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using Homework.Models;
+using Homework.Repositories;
 
-namespace Homework.Models
+namespace Homework.Services
 {
     public class MoneyService
     {
-        MoneyEF _db;
-        public MoneyService()
+       // MoneyEF _db;
+        IRepository<AccountBook> _AccountBookRep;
+        public MoneyService(IUnitOfWork UnitOfWork)
         {
-            _db = new MoneyEF();
+           // _db = new MoneyEF();
+            _AccountBookRep = new Repository<AccountBook>(UnitOfWork);
         }
 
         /// <summary>
@@ -22,7 +26,8 @@ namespace Homework.Models
         {
             int PageRows = 10;
             var result = new List<MoneyListViewModels>();
-            foreach (var item in _db.AccountBook.Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
+            //foreach (var item in _db.AccountBook.Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
+            foreach (var item in _AccountBookRep.LookupAll().Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
             {
                 result.Add(new MoneyListViewModels
                 {
@@ -121,7 +126,8 @@ namespace Homework.Models
         public void Add(AccountBook data)
         {
             data.Id = Guid.NewGuid();
-            _db.AccountBook.Add(data);
+            //_db.AccountBook.Add(data);
+            _AccountBookRep.Create(data);
         }
 
         /// <summary>
@@ -131,7 +137,8 @@ namespace Homework.Models
         /// <returns></returns>
         public AccountBook GetSingle(Guid Id)
         {
-            return _db.AccountBook.Find(Id);
+            //return _db.AccountBook.Find(Id);
+            return _AccountBookRep.GetSingle(c => c.Id == Id);
         }
 
         /// <summary>
@@ -140,7 +147,8 @@ namespace Homework.Models
         /// <param name="data"></param>
         public void Delete(AccountBook data)
         {
-            _db.AccountBook.Remove(data);
+            //_db.AccountBook.Remove(data);
+            _AccountBookRep.Remove(data);
         }
 
         /// <summary>
@@ -161,7 +169,8 @@ namespace Homework.Models
         /// </summary>
         public void Save()
         {
-            _db.SaveChanges();
+            //_db.SaveChanges();
+            _AccountBookRep.Commit();
         }
 
 

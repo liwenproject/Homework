@@ -22,6 +22,7 @@ namespace Homework.Models
         [Required]
         [Display(Name = "日期")]
         //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Remote("EarlierSameToday", "Valid",AreaReference.UseRoot , ErrorMessage ="欄位 日期 不可大於今天")]
         public DateTime BillingDate { get; set; }
         [Required]
