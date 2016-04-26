@@ -28,7 +28,7 @@ namespace Homework.Controllers
         {
             //var model = new MoneyAddViewModels();
             //return View(model);
-            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+            ViewData["CategoryList"] = new SelectList(DataDict.Category, "key" , "value");
 
             if (ModelState.IsValid)
             {
@@ -41,7 +41,7 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Add([Bind(Include = "Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
         {
-            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+            ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
 
             if (ModelState.IsValid)
             {
@@ -58,8 +58,8 @@ namespace Homework.Controllers
 
         public ActionResult List()
         {
-            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
-            
+            ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
+
             //return View(_MoneyService.GetDataFake());        //使用假資料
             //return View(DAOData.GetData()); //使用DAO方式取得資料
             return View(_MoneyService.GetDataEF());          //使用EF code-first from db 取得資料
@@ -102,7 +102,7 @@ namespace Homework.Controllers
             }
             AccountBook data = _MoneyService.GetSingle(Id.Value);
 
-            ViewData["CategoryList"] = MoneyModels.GetCategoryList();
+            ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
             return View(_MoneyService.Detail(data));
         }
 

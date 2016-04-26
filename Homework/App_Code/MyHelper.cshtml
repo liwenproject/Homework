@@ -1,13 +1,13 @@
-﻿@using Homework.App_Code;
+﻿@using Homework.Models;
 @function{
 // For more information, visit http://go.microsoft.com/fwlink/?LinkID=204658
 }
 
 @helper CategoryDisplay(int inValue)
 {
-    var Text = MyDictionary.Category[inValue];
-    var Color =MyDictionary.CategoryInfo[inValue].ForeColor.Name;
-    <div style="color:@Color">@Text</div>
+var Desc = DataDict.CategoryInfo[inValue].Desc;
+var ForeColor = DataDict.CategoryInfo[inValue].ForeColor.Name;
+    <div style="color:@ForeColor">@Desc</div>
 }
 
 

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Drawing;
-using System.Web.Mvc;
 
-namespace Homework.App_Code
+namespace Homework.Models
 {
     public class DictInfo
     {
@@ -14,7 +13,7 @@ namespace Homework.App_Code
         public Color BackColor { get; set; }
     }
 
-    public class MyDictionary
+    public class DataDict
     {
         public static Dictionary<int, string> Category = new Dictionary<int, string>()
         {
@@ -26,5 +25,6 @@ namespace Homework.App_Code
             {0, new DictInfo { Desc=Category[0] , ForeColor=Color.Blue, BackColor=Color.Transparent} },
             {1, new DictInfo { Desc=Category[1] , ForeColor=Color.Red, BackColor=Color.Transparent} }
         };
+
     }
 }
