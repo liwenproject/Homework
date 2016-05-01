@@ -7,10 +7,12 @@ using Homework.Models;
 using Homework.Repositories;
 using Homework.Services;
 using System.Net;
+using Homework.Filter;
 
 namespace Homework.Areas.Admin.Controllers
 {
-    [Authorize(Users = "admin@test.test")]
+    //[Authorize(Users = "admin@test.test")]
+    [AuthorizePlus(Users = "admin@test.test")]
     public class MoneyController : Controller
     {
         private readonly MoneyService _MoneyService;
