@@ -7,3 +7,4 @@
 /.vs
 /Homework/obj
 /packages
+*.ldf

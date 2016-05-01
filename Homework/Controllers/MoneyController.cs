@@ -38,6 +38,7 @@ namespace Homework.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Add([Bind(Include = "Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
         {
@@ -75,6 +76,7 @@ namespace Homework.Controllers
             return View(_MoneyService.Detail(data));
         }
 
+        [Authorize]
         public ActionResult Delete(Guid? Id)
         {
             if (Id == null)
@@ -94,6 +96,7 @@ namespace Homework.Controllers
             return RedirectToAction("Add");
         }
 
+        [Authorize]
         public ActionResult Edit(Guid? Id)
         {
             if (Id==null)
@@ -106,6 +109,7 @@ namespace Homework.Controllers
             return View(_MoneyService.Detail(data));
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit([Bind(Include = "Id,Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
         {
