@@ -76,54 +76,5 @@ namespace Homework.Controllers
             return View(_MoneyService.Detail(data));
         }
 
-        [Authorize]
-        public ActionResult Delete(Guid? Id)
-        {
-            if (Id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AccountBook data = _MoneyService.GetSingle(Id.Value);
-            if (data == null)
-            {
-                return HttpNotFound();
-            }
-
-            _MoneyService.Delete(data);
-            _LogService.Add(data.Categoryyy, data.Amounttt, "Delete");
-            _MoneyService.Save();
-
-            return RedirectToAction("Add");
-        }
-
-        [Authorize]
-        public ActionResult Edit(Guid? Id)
-        {
-            if (Id==null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AccountBook data = _MoneyService.GetSingle(Id.Value);
-
-            ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
-            return View(_MoneyService.Detail(data));
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
-        {
-            AccountBook olddata = _MoneyService.GetSingle(MoneyAdd.Id);
-            if (olddata != null && ModelState.IsValid)
-            {
-                _MoneyService.Edit(MoneyAdd, olddata);
-                _LogService.Add(olddata.Categoryyy, olddata.Amounttt, "EditBefore");
-                _LogService.Add(MoneyAdd.Category, MoneyAdd.Amount, "EditAfter");
-                _MoneyService.Save();
-                return RedirectToAction("Add");
-            }
-            return View();
-        }
-
     }
 }

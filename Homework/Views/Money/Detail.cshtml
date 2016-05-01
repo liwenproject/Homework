@@ -4,10 +4,8 @@
     ViewBag.Title = "Detail";
 }
 
-<h2>Detail</h2>
-
 <div>
-    <h4>MoneyListViewModels</h4>
+    <h4>我的記事本 > 明細</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,6 +33,13 @@
             @Html.DisplayFor(model => model.Amount)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Memo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Memo)
+        </dd>
     </dl>
 </div>
 <p>

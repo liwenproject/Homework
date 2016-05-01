@@ -27,7 +27,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
-        <th></th>
+        <th>明細</th>
     </tr>
 @foreach (var item in Model)
 {
@@ -49,9 +49,7 @@
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.Id)*@
-            @Html.ActionLink("明細", "Detail", new { Id = item.Id }) |
-            @Html.ActionLink("編輯", "Edit", new { Id=item.Id }) |
-            @Html.ActionLink("刪除", "Delete", new { Id = item.Id })
+            @Html.ActionLink("明細", "Detail", new { Id = item.Id })
         </td>
     </tr>
 }

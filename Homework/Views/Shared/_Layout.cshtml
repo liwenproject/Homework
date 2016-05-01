@@ -18,13 +18,14 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="@Url.Action("Add", "Money", new { area = "" })">我的記帳本 &raquo;</a>
+                <a class="navbar-brand" href="@Url.Action("List", "Money", new { area = "Admin" })">記帳維護作業 &raquo;</a>
                 @*@Html.ActionLink("我的記帳本", "Add", "Money", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", new { controller = "Home", area = "" })</li>
+                    <li>@Html.ActionLink("About", "About", new { controller = "Home", area = "" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", new { controller = "Home", area = "" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

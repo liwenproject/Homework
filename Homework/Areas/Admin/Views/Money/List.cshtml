@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Homework.Models.MoneyListViewModels>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>記帳維護作業</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>維護</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @MyHelper.CategoryDisplay(item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { Area = "Admin", id = item.Id }) |
+            @Html.ActionLink("明細", "Detail", new { Area="Admin", id=item.Id })|
+            @Html.ActionLink("刪除", "Delete", new { Area = "Admin", id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
