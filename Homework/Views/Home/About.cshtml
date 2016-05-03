@@ -5,3 +5,52 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+<br />
+<h4>jquery 練習</h4>
+<a target="_blank" href="http://skilltree.my" onclick="return ConfirmGo();">[ 前往(javascript) ]</a>&nbsp;
+<a target="_blank" href="http://skilltree.my" data-external="true">[ 前往(jquery) ]</a>
+
+<br /><br />
+<h4>Ajax 練習</h4>
+@using (Ajax.BeginForm(new AjaxOptions
+{
+    UpdateTargetId = "aaa",
+    LoadingElementId = "Load",
+    Confirm = "真的嗎?"
+}))
+{
+    <div class="form-group">
+        <label for="q">查詢</label>
+        <input class="form-control" id="q" name="q">
+    </div>
+    <button>查詢</button>
+}
+<div id="aaa" class="alert alert-danger" role="alert">
+    @string.Concat("您查詢的是", ViewData["q"])
+</div>
+<div id="Load" class="alert alert-warning" role="alert">
+    @(DateTime.Now) 等等等
+</div>
+
+<br/>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function ConfirmGo() {
+            var x = confirm("外部網站是否前往");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+        $(function () {
+            //alert('jquery');
+            $("a[data-external]").click(function (e) {
+                return (confirm("外部網站是否前往"));
+            });
+        });
+    </script>
+}
+

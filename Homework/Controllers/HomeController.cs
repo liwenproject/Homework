@@ -20,6 +20,12 @@ namespace Homework.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult About(string q)
+        {
+            return Content(q);
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
