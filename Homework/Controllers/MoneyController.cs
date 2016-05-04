@@ -7,6 +7,7 @@ using System.Net;
 using Homework.Models;
 using Homework.Services;
 using Homework.Repositories;
+using Homework.Filter;
 
 namespace Homework.Controllers
 {
@@ -38,10 +39,11 @@ namespace Homework.Controllers
             return View();
         }
 
-        [Authorize]
+        [AuthorizePlus]
         [HttpPost]
         public ActionResult Add([Bind(Include = "Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
         {
+            //System.Threading.Thread.Sleep(5000);
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
 
             if (ModelState.IsValid)
@@ -49,14 +51,14 @@ namespace Homework.Controllers
                 _MoneyService.Add(MoneyAdd);
                 _LogService.Add(MoneyAdd.Category, MoneyAdd.Amount, "Add");
                 _MoneyService.Save();
-                return View();
-                //return RedirectToAction("Add");
+                //return View();
+                return PartialView("List", _MoneyService.GetDataEF()); //加入ajax
             }
 
             return View();
         }
 
-
+        [ChildActionOnly]
         public ActionResult List()
         {
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");

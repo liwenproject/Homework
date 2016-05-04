@@ -6,7 +6,11 @@
 
 <h2>我的記帳本</h2>
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())*@
+@using (Ajax.BeginForm("Add", new AjaxOptions {
+    UpdateTargetId = "list",
+    Confirm = "確定新增?"
+}))
 {
     @Html.AntiForgeryToken()
 
@@ -62,8 +66,12 @@
         </div>
 }
 
+<div id="list">
+    @Html.Action("List", "Money")
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }
 
-@Html.Action("List")
