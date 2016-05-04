@@ -42,5 +42,19 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(init);
+        function init() {
+            //為所有的$.ajax呼叫設定預設值，當遇到StatusCode為410時，頁面導至登入頁
+            $.ajaxSetup({
+                statusCode: {
+                    410: function () {
+                        window.location.href = "@Url.Action("Login","Account")"
+                            + "?ReturnUrl=" + encodeURIComponent(window.location.href);
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>

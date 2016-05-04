@@ -45,9 +45,12 @@ namespace Homework.Filter
             //驗證是否是授權的連線，並且是 AJAX 呼叫。
             if (filterContext.Result is HttpUnauthorizedResult && filterContext.HttpContext.Request.IsAjaxRequest())
             {
-                ContentResult cr = new ContentResult();
-                cr.Content = "<p style=\"color:Red;font-weight:bold;\">您尚未登入無法觀看!! 請先登入後再嘗試。</p>";
-                filterContext.Result = cr;
+                //ContentResult cr = new ContentResult();
+                //cr.Content = "<p style=\"color:Red;font-weight:bold;\">您尚未登入無法觀看!! 請先登入後再嘗試。</p>";
+                //filterContext.Result = cr;
+
+                filterContext.HttpContext.Response.StatusCode = 410;
+                filterContext.HttpContext.Response.End();
             }
 
         }
