@@ -10,7 +10,7 @@
 <img src="~/image/TEST.JPG" alt="Car View" >
 
 @*@using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "list" }))*@
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formAll" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal container well">
@@ -74,10 +74,11 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script>
 
-    //WayA1();
-    //WayA2();
-    //WayB1();
-    WayC1();
+    //WayA1();  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
+    //WayA2();  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
+    //WayB1();  //ajax 使用 $(this).submit 和 $.ajax 的寫法 (按鈕需是type="submit"
+    //WayC1();  //ajax 使用 $("#btnAdd").click 按鈕ID的寫法 (按鈕需是type="button")
+    WayC2();    //ajax 使用 $("#btnAdd").click 並指定btnID和formID的寫法 (按鈕需是type="button")
 
     function WayA1() {  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
         alert('WayA1');
@@ -126,6 +127,21 @@
         });
     }
 
+    function WayC2() {  //ajax 使用 $("#btnAdd").click 並指定btnID和formID的寫法 (按鈕需是type="button")
+        alert('WayC2');
+        $("#btnAdd").click(function (e) {
+            //e.preventDefault();
+            if ($(this).valid()) {
+                $.ajax({
+                    url: "@Url.Action("Add","Money")",
+                    type: "post",
+                    data: $("#formAll").serialize(),
+                    success: function (result) { $("#list").html(result); }
+                });
+            }
+            //return false; // prevent normal submit 加入此指令則點選沒反應
+        });
+    }
 </script>
 }
 
