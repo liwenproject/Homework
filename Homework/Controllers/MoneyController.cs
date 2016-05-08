@@ -43,7 +43,6 @@ namespace Homework.Controllers
         [HttpPost]
         public ActionResult Add([Bind(Include = "Category,Amount,BillingDate,Memo")] MoneyAddViewModels MoneyAdd)
         {
-            //System.Threading.Thread.Sleep(5000);
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
 
             if (ModelState.IsValid)
@@ -51,6 +50,8 @@ namespace Homework.Controllers
                 _MoneyService.Add(MoneyAdd);
                 _LogService.Add(MoneyAdd.Category, MoneyAdd.Amount, "Add");
                 _MoneyService.Save();
+
+                //System.Threading.Thread.Sleep(3000);    //測試ajax
                 //return View();
                 return PartialView("List", _MoneyService.GetDataEF()); //加入ajax
             }

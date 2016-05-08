@@ -233,6 +233,7 @@
     <Content Include="App_Data\SkillTreeHomeworkDB_log.ldf">
       <DependentUpon>SkillTreeHomeworkDB.mdf</DependentUpon>
     </Content>
+    <Content Include="image\TEST.JPG" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
