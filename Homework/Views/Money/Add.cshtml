@@ -74,8 +74,9 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script>
 
-    WayA1();
+    //WayA1();
     //WayA2();
+    WayB1();
 
     function WayA1() {  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
         alert('WayA1');
@@ -91,6 +92,19 @@
         $(this).submit(function () {
             $.post($(this).attr("action"), $("form").serialize()
                 , function (data) { $("#list").html(data); });
+            return false; // prevent normal submit
+        });
+    }
+
+    function WayB1() {  //ajax 使用 $(this).submit 和 $.ajax 的寫法 (按鈕需是type="submit")
+        alert('WayB1');
+        $(this).submit(function () {
+            $.ajax({
+                url: "@Url.Action("Add","Money")",
+                type: "post",
+                data: $("form").serialize(),
+                success: function (data) { $("#list").html(data); }
+            });
             return false; // prevent normal submit
         });
     }
