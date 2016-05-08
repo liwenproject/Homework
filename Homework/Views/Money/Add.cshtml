@@ -59,7 +59,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="btnAdd" type="submit" value="新增" class="btn btn-primary btn-sm" />
+                <input id="btnAdd" type="button" value="新增" class="btn btn-primary btn-sm" />
             </div>
         </div>
     </div>
@@ -76,7 +76,8 @@
 
     //WayA1();
     //WayA2();
-    WayB1();
+    //WayB1();
+    WayC1();
 
     function WayA1() {  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
         alert('WayA1');
@@ -106,6 +107,22 @@
                 success: function (data) { $("#list").html(data); }
             });
             return false; // prevent normal submit
+        });
+    }
+
+    function WayC1() {  //ajax 使用 $("#btnAdd").click 按鈕ID的寫法 (按鈕需是type="button")
+        alert('WayC1');
+        $("#btnAdd").click(function (e) {
+            //e.preventDefault();
+            if ($(this).valid()) {
+                $.ajax({
+                    url: "@Url.Action("Add","Money")",
+                    type: "post",
+                    data: $(this.form).serialize(),
+                    success: function (result) { $("#list").html(result); }
+                });
+            }
+            //return false; // prevent normal submit 加入此指令則點選沒反應
         });
     }
 
