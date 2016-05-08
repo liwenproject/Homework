@@ -6,11 +6,11 @@
 
 <h2>我的記帳本</h2>
 
-使用圖片測試ajax，新增時scrollbar不會因重新載入拉到最上面
-<img src="~/image/TEST.JPG" alt="Car View" >
+@*使用圖片測試ajax，新增時scrollbar不會因重新載入拉到最上面
+<img src="~/image/TEST.JPG" alt="Car View" >*@
 
-@*@using (Ajax.BeginForm("Add", new AjaxOptions { UpdateTargetId = "list" }))*@
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formAll" }))
+@*@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formAll" }))*@
+@using (Ajax.BeginForm("Add", new { controller = "Money", Route = "" }, new AjaxOptions { UpdateTargetId = "list" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal container well">
@@ -59,7 +59,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="btnAdd" type="button" value="新增" class="btn btn-primary btn-sm" />
+                <input id="btnAdd" type="submit" value="新增" class="btn btn-primary btn-sm" />
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
     //WayA2();  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
     //WayB1();  //ajax 使用 $(this).submit 和 $.ajax 的寫法 (按鈕需是type="submit"
     //WayC1();  //ajax 使用 $("#btnAdd").click 按鈕ID的寫法 (按鈕需是type="button")
-    WayC2();    //ajax 使用 $("#btnAdd").click 並指定btnID和formID的寫法 (按鈕需是type="button")
+    //WayC2();    //ajax 使用 $("#btnAdd").click 並指定btnID和formID的寫法 (按鈕需是type="button")
 
     function WayA1() {  //ajax 使用 $(this).submit 的寫法 (按鈕需是type="submit")
         alert('WayA1');
@@ -142,6 +142,7 @@
             //return false; // prevent normal submit 加入此指令則點選沒反應
         });
     }
+
 </script>
 }
 
