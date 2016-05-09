@@ -1,0 +1,16 @@
+﻿@model DateTime?
+@{
+
+    //var value = Model?.ToString("yyyy-MM-dd HH:mm") ?? "";
+
+    var value = Model.HasValue
+    ? Model.Value.ToString("yyyy-MM-dd HH:mm")
+    : "";
+}
+@Html.TextBox("", value, new
+{
+    @class = "form-control",
+    // Razor 的 attribute 必須是下底線
+    data_datetimepicker = "y", //y是隨便給
+    data_date_format = "YYYY-MM-dd HH:mm",
+})
