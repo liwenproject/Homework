@@ -303,6 +303,8 @@
     <Content Include="Views\Money\List.cshtml" />
     <Content Include="Areas\Admin\Views\Money\Edit.cshtml" />
     <Content Include="Views\Money\Detail.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Amount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

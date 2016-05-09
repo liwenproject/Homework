@@ -51,7 +51,7 @@ namespace Homework.Models
                         {
                             Id = Guid.Parse(reader["Id"].ToString()),
                             Category = int.Parse(reader["Categoryyy"].ToString()),
-                            Amount = double.Parse(reader["Amounttt"].ToString()),
+                            Amount = int.Parse(reader["Amounttt"].ToString()),
                             BillingDate = DateTime.Parse(reader["Dateee"].ToString())
                         };
                         result.Add(item);

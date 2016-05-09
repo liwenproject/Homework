@@ -1,0 +1,10 @@
+﻿@model Int32?
+@if (Model.HasValue)
+{
+    var myclass = "";
+    if (Model.Value < 50000) { myclass = ""; }
+    else if (Model.Value < 80000) { myclass = "label label-warning"; }
+    else { myclass = "label label-danger"; }
+
+    <div class="@myclass">@Model.Value.ToString("#,##0")</div>
+}

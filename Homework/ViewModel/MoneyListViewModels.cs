@@ -13,11 +13,12 @@ namespace Homework.Models
         [Display(Name = "類別")]
         public int Category { get; set; }
         [Display(Name = "日期")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BillingDate { get; set; }
         [Display(Name = "金額")]
         //[DataType(DataType.Currency)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:#,##0}")]
-        public double Amount { get; set; }
+        //[DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:#,##0}")]
+        [UIHint("Amount")]
+        public Int32 Amount { get; set; }
     }
 }
