@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using Homework.Models;
 using Homework.Repositories;
+using System.Linq.Expressions;
 
 namespace Homework.Services
 {
@@ -66,6 +67,53 @@ namespace Homework.Services
                 new MoneyListViewModels { Category = 0, Amount = 800, BillingDate = Convert.ToDateTime("2016/01/03") },
             };
         }
+
+        /// <summary>
+        /// 按年月查詢
+        /// </summary>
+        /// <param name="Year"></param>
+        /// <param name="Month"></param>
+        /// <returns></returns>
+        public List<MoneyListViewModels> QueryYM(string Year, string Month)
+        {
+            var empty = new List<MoneyListViewModels>();
+            int iYear, iMonth;
+            if (!int.TryParse(Year.Trim(), out iYear) || !int.TryParse(Month.Trim(), out iMonth))
+            {
+                return empty;  //需補上錯誤處理
+            }
+            if (iYear < 1991 || iYear > DateTime.Today.Year || iMonth < 1 || iMonth > 12)
+            {
+                return empty;  //需補上錯誤處理
+            }
+
+            DateTime BeginDate = new DateTime(iYear, iMonth, 01, 00, 00, 00);
+            DateTime EndDate = BeginDate.AddMonths(1);
+            //return Query(c => c.Amounttt > 70000);
+            return Query(c => c.Dateee >= BeginDate && c.Dateee < EndDate);
+        }
+
+        /// <summary>
+        /// 查詢-EF-DB
+        /// </summary>
+        /// <param name="money"></param>
+        public List<MoneyListViewModels> Query(Expression<Func<AccountBook, bool>> filter)
+        {
+            int PageRows = 10;
+            var result = new List<MoneyListViewModels>();
+            foreach (var item in _AccountBookRep.Query(filter).Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
+            {
+                result.Add(new MoneyListViewModels
+                {
+                    Id = item.Id,
+                    Category = item.Categoryyy,
+                    Amount = item.Amounttt,
+                    BillingDate = item.Dateee
+                });
+            }
+            return result;
+        }
+
 
         /// <summary>
         /// 明細

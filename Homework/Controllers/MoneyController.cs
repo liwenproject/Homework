@@ -64,9 +64,20 @@ namespace Homework.Controllers
         {
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
 
-            //return View(_MoneyService.GetDataFake());        //使用假資料
-            //return View(DAOData.GetData()); //使用DAO方式取得資料
-            return View(_MoneyService.GetDataEF());          //使用EF code-first from db 取得資料
+            var Year = Request.QueryString["yyyy"];
+            var Month = Request.QueryString["mm"];
+            if (Year == null || Month == null) 
+            {
+                // 全部資料
+                //return View(_MoneyService.GetDataFake());        //使用假資料
+                //return View(DAOData.GetData()); //使用DAO方式取得資料
+                return View(_MoneyService.GetDataEF());          //使用EF code-first from db 取得資料
+            }
+            else
+            {
+                // 按年月查詢
+                return View(_MoneyService.QueryYM(Year,Month));
+            }
         }
 
         public ActionResult Detail(Guid? Id)

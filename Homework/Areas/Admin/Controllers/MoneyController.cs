@@ -35,7 +35,18 @@ namespace Homework.Areas.Admin.Controllers
         {
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
 
-            return View(_MoneyService.GetDataEF());
+            var Year = Request.QueryString["yyyy"];
+            var Month = Request.QueryString["mm"];
+            if (Year == null || Month == null)
+            {
+                // 全部資料
+                return View(_MoneyService.GetDataEF());
+            }
+            else
+            {
+                // 按年月查詢
+                return View(_MoneyService.QueryYM(Year, Month));
+            }
         }
 
         public ActionResult Detail(Guid? Id)
