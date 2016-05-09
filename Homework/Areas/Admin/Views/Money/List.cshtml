@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Homework.Models.MoneyListViewModels>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<Homework.Models.MoneyListViewModels>
 
 @{
     ViewBag.Title = "List";
@@ -41,3 +43,9 @@
 }
 
 </table>
+<nav>
+    @Html.PagedListPager((IPagedList)Model, d => Url.Action("List", new
+    {
+        page = d
+    }))
+</nav>

@@ -25,10 +25,9 @@ namespace Homework.Services
         /// <returns></returns>
         public List<MoneyListViewModels> GetDataEF()
         {
-            int PageRows = 10;
             var result = new List<MoneyListViewModels>();
             //foreach (var item in _db.AccountBook.Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
-            foreach (var item in _AccountBookRep.LookupAll().Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
+            foreach (var item in _AccountBookRep.LookupAll().OrderByDescending(c => c.Dateee).ToList())
             {
                 result.Add(new MoneyListViewModels
                 {
@@ -99,9 +98,8 @@ namespace Homework.Services
         /// <param name="money"></param>
         public List<MoneyListViewModels> Query(Expression<Func<AccountBook, bool>> filter)
         {
-            int PageRows = 10;
             var result = new List<MoneyListViewModels>();
-            foreach (var item in _AccountBookRep.Query(filter).Take(PageRows).OrderByDescending(c => c.Dateee).ToList())
+            foreach (var item in _AccountBookRep.Query(filter).OrderByDescending(c => c.Dateee).ToList())
             {
                 result.Add(new MoneyListViewModels
                 {

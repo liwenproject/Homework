@@ -8,6 +8,7 @@ using Homework.Repositories;
 using Homework.Services;
 using System.Net;
 using Homework.Filter;
+using PagedList;
 
 namespace Homework.Areas.Admin.Controllers
 {
@@ -31,21 +32,24 @@ namespace Homework.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult List()
+        public ActionResult List(int? page)
         {
             ViewData["CategoryList"] = new SelectList(DataDict.Category, "key", "value");
+
+            var pageIndex = page.HasValue ? page.Value < 1 ? 1 : page.Value : 1;
+            var pageSize = 10;
 
             var Year = Request.QueryString["yyyy"];
             var Month = Request.QueryString["mm"];
             if (Year == null || Month == null)
             {
                 // 全部資料
-                return View(_MoneyService.GetDataEF());
+                return View(_MoneyService.GetDataEF().ToPagedList(pageIndex, pageSize));
             }
             else
             {
                 // 按年月查詢
-                return View(_MoneyService.QueryYM(Year, Month));
+                return View(_MoneyService.QueryYM(Year, Month).ToPagedList(pageIndex, pageSize));
             }
         }
 
